@@ -1,0 +1,66 @@
+#include <iostream>
+#include <conio.h>
+#include <locale>
+ 
+class Complex
+{ 
+private:
+    float realPart, imaginaryPart; 
+    int j;
+public
+Complex(); 
+Complex(float real_part,float im_part); 
+Complex operator + (Complex) const;
+Complex operator - (Complex ) const;
+ 
+float getReal(){return realPart;};
+float getIm(){return imaginaryPart;};
+void show();
+void input();
+ 
+};
+Complex Complex::operator+ (Complex d) const
+{
+    return Complex(realPart+d.getReal(), imaginaryPart+d.getIm()); 
+}
+Complex Complex::operator- (Complex d) const
+{
+    return Complex(realPart-d.getReal(), imaginaryPart-d.getIm()); 
+}
+Complex :: Complex() 
+{ 
+    realPart = 0;
+    imaginaryPart = 0;
+}
+ 
+Complex :: Complex(float real_part,float im_part) 
+{ 
+    realPart =  real_part;
+    imaginaryPart = im_part;
+}
+ 
+void Complex :: input() 
+{
+std::cout <<"Enter the real part of a complex number\n";
+std::cin>> realPart;
+std::cout <<"Enter the imaginary part of a complex number \n";
+std::cin>> imaginaryPart;
+}
+ 
+void Complex :: show()
+{
+printf_s("(%.3f+%.3f*j)\n", realPart, imaginaryPart);
+}
+int main()
+{
+setlocale(LC_ALL, "English");
+Complex a,b,c,d;
+a.input();
+b.input();
+c=a+b;
+d=a-b;
+c.show();
+d.show();
+getch();
+return 0;
+}
